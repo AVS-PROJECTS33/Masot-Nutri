@@ -141,12 +141,15 @@
                         </div>
                     </div>
                     <div class="relative mt-10 md:mt-0">
-                        <!-- Imagen 1 (La Nutricionista) -->
-                        <div class="relative rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(220,38,38,0.2)] border-4 border-primary/50 aspect-[4/5] group">
-                            <!-- Imagen actualizada a la URL pública de Firebase Storage -->
-                            <img src="https://firebasestorage.googleapis.com/v0/b/nutrisport-masot.firebasestorage.app/o/Image%20(6).jpg?alt=media" 
-                                 alt="Nutricionista Masot" 
-                                 class="w-full h-full object-cover transition-all duration-700 hover:scale-105">
+                        <!-- Imagen/Vídeo 1 (La Nutricionista animada) -->
+                        <div class="relative rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(220,38,38,0.2)] border-4 border-primary/50 aspect-[4/5] group bg-black">
+                            <!-- Vídeo importado desde GitHub en formato raw -->
+                            <video src="https://raw.githubusercontent.com/AVS-PROJECTS33/Masot-Nutri/main/Animar_esta_imagen.mp4" 
+                                   autoplay loop muted playsinline
+                                   class="w-full h-full object-cover transition-all duration-700 hover:scale-105">
+                                <!-- Fallback por si el navegador no soporta vídeo -->
+                                Tu navegador no soporta vídeos.
+                            </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent pointer-events-none"></div>
                         </div>
                     </div>
