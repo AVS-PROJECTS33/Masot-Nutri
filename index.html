@@ -1,1 +1,473 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrisport Masot</title>
+    
+    <!-- Tailwind CSS para el diseño -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración personalizada de colores de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#dc2626', // Rojo Masot
+                        primaryDark: '#991b1b', // Rojo oscuro
+                        dark: '#0a0a0a', // Negro absoluto
+                        accent: '#ef4444', // Rojo brillante
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons para los iconos -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Estilos adicionales para animaciones suaves -->
+    <style>
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-200 bg-dark selection:bg-primary selection:text-white flex flex-col min-h-screen">
+
+    <!-- Navegación -->
+    <nav class="fixed w-full bg-black/95 backdrop-blur-sm shadow-md border-b border-gray-900 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="cambiarPagina('inicio')">
+                    <!-- Imagen del Logo con fallback (Actualizado a Image (3).jpg) -->
+                    <img src="Image (3).jpg" alt="Logo Masot" class="h-14 w-14 object-cover rounded-full border-2 border-primary bg-black" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=150&h=150&fit=crop'">
+                    <span class="font-black text-xl md:text-2xl tracking-tighter text-white uppercase">Nutrisport <span class="text-primary">Masot</span></span>
+                </div>
+                
+                <!-- Menú Escritorio -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="javascript:void(0)" onclick="cambiarPagina('inicio')" class="nav-link text-gray-300 hover:text-primary font-bold transition-colors uppercase tracking-wide text-sm">Inicio</a>
+                    <a href="javascript:void(0)" onclick="cambiarPagina('historia')" class="nav-link text-gray-300 hover:text-primary font-bold transition-colors uppercase tracking-wide text-sm">El Centro</a>
+                    <a href="javascript:void(0)" onclick="cambiarPagina('reservas')" class="nav-link text-gray-300 hover:text-primary font-bold transition-colors uppercase tracking-wide text-sm">Servicios</a>
+                    <a href="javascript:void(0)" onclick="cambiarPagina('contacto')" class="nav-link text-gray-300 hover:text-primary font-bold transition-colors uppercase tracking-wide text-sm">Contacto</a>
+                    <a href="https://www.instagram.com/nutrisport_masot/" target="_blank" rel="noopener noreferrer" class="bg-primary text-white px-5 py-2.5 rounded-full font-black hover:bg-primaryDark transition-colors flex items-center gap-2 uppercase text-sm tracking-wide shadow-lg shadow-primary/20">
+                        <i class="ph ph-instagram-logo text-xl"></i>
+                        Instagram
+                    </a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-primary focus:outline-none">
+                        <i class="ph ph-list text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil (Oculto por defecto) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-gray-900 absolute w-full left-0">
+            <div class="px-4 pt-2 pb-4 space-y-1 shadow-lg">
+                <a href="javascript:void(0)" onclick="cambiarPagina('inicio')" class="block px-3 py-3 text-base font-bold text-gray-300 hover:text-primary hover:bg-gray-900 rounded-md uppercase text-center border-b border-gray-900">Inicio</a>
+                <a href="javascript:void(0)" onclick="cambiarPagina('historia')" class="block px-3 py-3 text-base font-bold text-gray-300 hover:text-primary hover:bg-gray-900 rounded-md uppercase text-center border-b border-gray-900">El Centro</a>
+                <a href="javascript:void(0)" onclick="cambiarPagina('reservas')" class="block px-3 py-3 text-base font-bold text-gray-300 hover:text-primary hover:bg-gray-900 rounded-md uppercase text-center border-b border-gray-900">Servicios</a>
+                <a href="javascript:void(0)" onclick="cambiarPagina('contacto')" class="block px-3 py-3 text-base font-bold text-gray-300 hover:text-primary hover:bg-gray-900 rounded-md uppercase text-center">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENEDOR PRINCIPAL DE PÁGINAS -->
+    <main class="flex-grow pt-20">
+
+        <!-- PÁGINA 1: Inicio (Hero) -->
+        <section id="inicio" class="pagina-seccion block pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden relative fade-in">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8 z-10">
+                        <div class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-black text-sm uppercase tracking-widest border border-primary/30 shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+                            Nutricionista
+                        </div>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight uppercase tracking-tighter">
+                            Transforma <span class="text-primary">tu vida,</span> <br>
+                            con hábitos saludables.
+                        </h1>
+                        <p class="text-lg text-gray-300 md:text-xl max-w-lg leading-relaxed font-medium">
+                            Especialista en <strong class="text-white">nutrición hormonal y metabólica</strong>. Mejora de manera definitiva tu <strong class="text-white">composición corporal</strong>. <br><br>
+                            <span class="text-primary font-black text-2xl tracking-wide bg-dark/50 inline-block p-1 rounded">✳️ Te doy las herramientas ✳️</span>
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <!-- Enlace directo a WhatsApp -->
+                            <a href="https://wa.me/34722524609?text=Hola,%20vengo%20de%20la%20web%20y%20quiero%20empezar%20mi%20cambio." target="_blank" class="px-8 py-4 bg-primary text-white rounded-full font-black text-lg text-center hover:bg-primaryDark transition-all shadow-lg shadow-primary/40 flex items-center justify-center gap-2 uppercase tracking-wide">
+                                Escríbeme por WhatsApp
+                                <i class="ph-bold ph-whatsapp-logo"></i>
+                            </a>
+                            <button onclick="cambiarPagina('historia')" class="px-8 py-4 bg-transparent text-white border-2 border-primary rounded-full font-black text-lg text-center hover:bg-primary/10 transition-all uppercase tracking-wide">
+                                Saber más
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative mt-10 md:mt-0">
+                        <!-- Imagen 1 (La Nutricionista) -->
+                        <div class="relative rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(220,38,38,0.2)] border-4 border-primary/50 aspect-[4/5] group">
+                            <!-- Usa "Image (1).jpg" pero con un fallback de Unsplash si no se encuentra en el editor -->
+                            <img src="Image (1).jpg" 
+                                 alt="Nutricionista" 
+                                 class="w-full h-full object-cover transition-all duration-700 hover:scale-105"
+                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1000&auto=format&fit=crop'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent pointer-events-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PÁGINA 2: Historia / El Centro -->
+        <section id="historia" class="pagina-seccion hidden py-16 bg-black relative fade-in min-h-[80vh]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="text-sm font-black tracking-widest text-primary uppercase mb-2">El Centro Masot</h2>
+                    <h3 class="text-3xl md:text-5xl font-black text-white uppercase leading-tight">Tu transformación <span class="text-primary">empieza aquí.</span></h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="order-2 md:order-1 relative">
+                        <!-- Imagen 2 (Agua con Lima) -->
+                        <img src="Image.jpg" 
+                             alt="Hábitos saludables" 
+                             class="border-l-8 border-b-8 border-primary rounded-xl shadow-2xl shadow-primary/10 object-cover aspect-square w-full"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?q=80&w=1000&auto=format&fit=crop'">
+                    </div>
+                    <div class="order-1 md:order-2 space-y-6">
+                        <p class="text-gray-300 leading-relaxed text-lg">
+                            En <strong>CENTRE MASOT</strong> te ayudo a entender tu cuerpo. No se trata solo de comer menos, se trata de una <strong>nutrición hormonal y metabólica</strong> enfocada en resultados reales y duraderos.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed text-lg">
+                            Mi objetivo es mejorar tu <strong>composición corporal</strong>, ya sea perdiendo grasa o ganando masa muscular, enseñándote a gestionar tu alimentación. <em>Transforma tu vida, con hábitos saludables.</em>
+                        </p>
+                        <div class="pt-6 grid grid-cols-2 gap-6 border-t border-gray-900 mt-6">
+                            <div>
+                                <i class="ph-fill ph-dna text-primary text-4xl mb-3"></i>
+                                <h4 class="font-black text-white text-lg uppercase tracking-wide">Hormonal</h4>
+                                <p class="text-sm text-gray-400">Salud metabólica desde el interior.</p>
+                            </div>
+                            <div>
+                                <i class="ph-fill ph-barbell text-primary text-4xl mb-3"></i>
+                                <h4 class="font-black text-white text-lg uppercase tracking-wide">Composición</h4>
+                                <p class="text-sm text-gray-400">Mejora tu físico de forma inteligente.</p>
+                            </div>
+                        </div>
+                        <div class="pt-6">
+                            <button onclick="cambiarPagina('reservas')" class="px-8 py-4 bg-primary text-white rounded-lg font-black text-lg hover:bg-primaryDark transition-all flex items-center justify-center gap-2 uppercase tracking-wide w-full md:w-auto">
+                                Ver mis servicios
+                                <i class="ph-bold ph-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PÁGINA 3: Reservas / Servicios -->
+        <section id="reservas" class="pagina-seccion hidden py-16 bg-dark relative fade-in">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 mix-blend-overlay"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <h2 class="text-sm font-black tracking-widest text-primary uppercase mb-2">Mis Servicios</h2>
+                <h3 class="text-3xl md:text-5xl font-black text-white uppercase mb-4">Empieza tu <span class="text-primary">evolución</span></h3>
+                <p class="text-gray-400 max-w-2xl mx-auto mb-10 font-medium">No busques excusas. Selecciona el servicio que mejor se adapte a tus objetivos y contáctame por WhatsApp para reservar tu plaza.</p>
+                
+                <!-- Imagen 3 (Comida sana) integrada en los servicios -->
+                <div class="mb-12 w-full max-w-4xl mx-auto h-64 rounded-2xl overflow-hidden border-2 border-primary/30 relative">
+                     <img src="Image (2).jpg" alt="Nutrición variada" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1000&auto=format&fit=crop'">
+                     <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                         <span class="text-2xl md:text-3xl font-black text-white uppercase tracking-widest drop-shadow-lg text-center px-4">Come lo que te gusta,<br><span class="text-primary">llega a donde quieres.</span></span>
+                     </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                    
+                    <!-- Plan 1 -->
+                    <div class="bg-black rounded-xl p-8 shadow-xl hover:shadow-primary/20 transition-all duration-300 border border-gray-800 hover:border-primary flex flex-col h-full relative overflow-hidden group">
+                        <div class="mb-6 relative z-10">
+                            <span class="inline-block p-3 rounded-lg bg-gray-900 text-primary mb-4 border border-gray-800">
+                                <i class="ph ph-scales text-2xl"></i>
+                            </span>
+                            <h4 class="text-2xl font-black text-white uppercase tracking-wide">Composición</h4>
+                            <p class="text-gray-400 mt-2 text-sm">Mejora de la composición corporal adaptada a ti.</p>
+                        </div>
+                        <ul class="space-y-4 mb-8 flex-grow relative z-10">
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-check text-primary mt-1"></i><span class="text-gray-300">Entrevista y estudio inicial</span></li>
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-check text-primary mt-1"></i><span class="text-gray-300">Plan nutricional a medida</span></li>
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-check text-primary mt-1"></i><span class="text-gray-300">Hábitos saludables paso a paso</span></li>
+                        </ul>
+                        <!-- Botón WhatsApp Directo -->
+                        <a href="https://wa.me/34722524609?text=Hola,%20me%20interesa%20el%20servicio%20de%20Composición%20Corporal" target="_blank" class="w-full py-3.5 bg-gray-900 hover:bg-primary text-white font-black rounded-lg transition-colors border border-gray-800 hover:border-primary relative z-10 uppercase tracking-widest text-sm text-center flex items-center justify-center gap-2">
+                            Reservar por WhatsApp <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                        </a>
+                    </div>
+
+                    <!-- Plan 2 (Destacado) -->
+                    <div class="bg-gradient-to-b from-[#1a0505] to-black rounded-xl p-8 shadow-[0_0_30px_rgba(220,38,38,0.15)] transform md:-translate-y-4 border border-primary flex flex-col h-full relative overflow-hidden">
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 bg-primary text-white px-6 py-1.5 rounded-b-lg font-black text-xs uppercase tracking-widest shadow-md">
+                            MÁS COMPLETO
+                        </div>
+                        <div class="mb-6 relative z-10 mt-6">
+                            <span class="inline-block p-3 rounded-lg bg-black text-primary mb-4 border border-primary/50">
+                                <i class="ph ph-dna text-2xl"></i>
+                            </span>
+                            <h4 class="text-2xl font-black text-white uppercase tracking-wide">Hormonal & Metabólica</h4>
+                            <p class="text-gray-300 mt-2 text-sm">Estudio profundo para asegurar resultados reales.</p>
+                        </div>
+                        <ul class="space-y-4 mb-8 flex-grow relative z-10">
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-check text-primary mt-1"></i><span class="text-white font-medium">Análisis hormonal y metabólico</span></li>
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-check text-primary mt-1"></i><span class="text-white font-medium">Revisión continua de progreso</span></li>
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-check text-primary mt-1"></i><span class="text-white font-medium">Resolución de dudas rápida</span></li>
+                        </ul>
+                         <!-- Botón WhatsApp Directo -->
+                         <a href="https://wa.me/34722524609?text=Hola,%20me%20interesa%20el%20servicio%20de%20Nutrición%20Hormonal%20y%20Metabólica" target="_blank" class="w-full py-3.5 bg-primary hover:bg-primaryDark text-white font-black rounded-lg transition-colors shadow-lg relative z-10 uppercase tracking-widest text-sm text-center flex items-center justify-center gap-2">
+                            Reservar por WhatsApp <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                        </a>
+                    </div>
+
+                    <!-- Plan 3 -->
+                    <div class="bg-black rounded-xl p-8 shadow-xl hover:shadow-primary/20 transition-all duration-300 border border-gray-800 hover:border-primary flex flex-col h-full relative overflow-hidden group">
+                        <div class="mb-6 relative z-10">
+                            <span class="inline-block p-3 rounded-lg bg-gray-900 text-primary mb-4 border border-gray-800">
+                                <i class="ph ph-lightning text-2xl"></i>
+                            </span>
+                            <h4 class="text-2xl font-black text-white uppercase tracking-wide">Transfórmate</h4>
+                            <p class="text-gray-400 mt-2 text-sm">El combo definitivo: mis herramientas para cambiar tu vida.</p>
+                        </div>
+                        <ul class="space-y-4 mb-8 flex-grow relative z-10">
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-check text-primary mt-1"></i><span class="text-gray-300">Plan Nutricional Integral</span></li>
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-check text-primary mt-1"></i><span class="text-gray-300">Pautas de entrenamiento</span></li>
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-check text-primary mt-1"></i><span class="text-gray-300">Seguimiento exhaustivo</span></li>
+                        </ul>
+                         <!-- Botón WhatsApp Directo -->
+                         <a href="https://wa.me/34722524609?text=Hola,%20me%20interesa%20el%20Programa%20Transfórmate" target="_blank" class="w-full py-3.5 bg-gray-900 hover:bg-primary text-white font-black rounded-lg transition-colors border border-gray-800 hover:border-primary relative z-10 uppercase tracking-widest text-sm text-center flex items-center justify-center gap-2">
+                            Consultar <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PÁGINA 4: Contacto -->
+        <section id="contacto" class="pagina-seccion hidden py-16 bg-black relative fade-in min-h-[80vh]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <!-- Info de contacto -->
+                    <div>
+                        <h2 class="text-sm font-black tracking-widest text-primary uppercase mb-2">Contacto</h2>
+                        <h3 class="text-3xl md:text-5xl font-black text-white uppercase mb-6 leading-tight">¿Listo para el <span class="text-primary">cambio?</span></h3>
+                        <p class="text-gray-400 mb-8 text-lg font-medium">
+                            Te doy las herramientas, tú pones la voluntad. La vía más rápida para hablar conmigo es a través de WhatsApp. ¡Escríbeme!
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <!-- Teléfono / WhatsApp -->
+                            <a href="https://wa.me/34722524609?text=Hola,%20vengo%20de%20la%20web" target="_blank" class="flex items-center gap-4 p-5 rounded-xl border border-primary/50 bg-primary/10 hover:bg-primary/20 transition-all group cursor-pointer shadow-[0_0_15px_rgba(220,38,38,0.2)]">
+                                <div class="w-16 h-16 bg-[#25D366] rounded-xl flex items-center justify-center text-white shadow-lg">
+                                    <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-white uppercase tracking-wide">Escríbeme por WhatsApp</h4>
+                                    <p class="text-gray-300 font-bold text-lg">+34 722 524 609</p>
+                                </div>
+                            </a>
+
+                            <!-- Llamada Directa (Nuevo Botón) -->
+                            <a href="tel:+34722524609" class="flex items-center gap-4 p-5 rounded-xl border border-gray-800 bg-gray-900 hover:border-primary transition-all group cursor-pointer">
+                                <div class="w-16 h-16 bg-black border border-gray-800 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                    <i class="ph-fill ph-phone-call text-3xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-white uppercase tracking-wide group-hover:text-primary transition-colors">Llamada Directa</h4>
+                                    <p class="text-gray-400 font-bold text-lg">+34 722 524 609</p>
+                                </div>
+                            </a>
+
+                            <!-- Ubicación -->
+                            <div class="flex items-center gap-4 p-5 rounded-xl border border-gray-800 bg-gray-900">
+                                <div class="w-14 h-14 bg-black border border-gray-800 rounded-lg flex items-center justify-center text-primary">
+                                    <i class="ph-fill ph-map-pin text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-white uppercase tracking-wide">Ubicación</h4>
+                                    <p class="text-gray-400">Carretera Malgrat 22, Blanes 17300</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Instagram (Destacado) -->
+                            <a href="https://www.instagram.com/nutrisport_masot/" target="_blank" class="flex items-center gap-4 p-5 rounded-xl border border-gray-800 bg-gray-900 hover:border-primary transition-all group">
+                                <div class="w-14 h-14 bg-gradient-to-tr from-yellow-500 via-red-500 to-primary rounded-lg flex items-center justify-center text-white">
+                                    <i class="ph ph-instagram-logo text-3xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-white group-hover:text-primary transition-colors uppercase tracking-wide">Sígueme en Instagram</h4>
+                                    <p class="text-gray-400">@nutrisport_masot</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mensaje Directo -->
+                    <div class="bg-gray-900 p-8 md:p-10 rounded-xl border border-gray-800 shadow-2xl text-center flex flex-col justify-center items-center h-full">
+                        <i class="ph-fill ph-chat-circle-text text-6xl text-primary mb-6"></i>
+                        <h4 class="text-2xl font-black text-white uppercase mb-4">¿Atención rápida?</h4>
+                        <p class="text-gray-400 mb-8">No uses formularios lentos que acaban en la carpeta de spam. Haz clic abajo y hablemos directamente de tus objetivos.</p>
+                        <a href="https://wa.me/34722524609?text=Hola,%20necesito%20ayuda%20con%20mi%20nutrición" target="_blank" class="w-full py-5 bg-[#25D366] text-white rounded-lg font-black hover:bg-green-600 transition-colors flex justify-center items-center gap-2 uppercase tracking-widest text-lg shadow-lg shadow-green-900/50">
+                            Abrir WhatsApp ahora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PÁGINA 5: Política de Privacidad -->
+        <section id="privacidad" class="pagina-seccion hidden py-16 bg-black relative fade-in min-h-[80vh]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-black text-white uppercase mb-8 border-b border-gray-800 pb-4">Política de <span class="text-primary">Privacidad</span></h2>
+                <div class="space-y-6 text-gray-300 leading-relaxed">
+                    <p>En Nutrisport Masot valoramos y respetamos su privacidad. Esta política describe cómo recopilamos, usamos y protegemos su información personal según las normativas vigentes.</p>
+                    <h3 class="text-xl font-bold text-white mt-6">1. Recopilación de Información</h3>
+                    <p>Recopilamos información cuando se comunica con nosotros a través de WhatsApp, llamadas telefónicas o correo electrónico. Esta información puede incluir su nombre, número de teléfono y cualquier dato de salud que decida compartir voluntariamente para adaptar sus planes nutricionales.</p>
+                    <h3 class="text-xl font-bold text-white mt-6">2. Uso de la Información</h3>
+                    <p>La información recopilada se utiliza exclusivamente para proporcionarle asesoramiento nutricional personalizado, gestionar sus reservas y comunicarnos con usted sobre sus objetivos.</p>
+                    <h3 class="text-xl font-bold text-white mt-6">3. Protección de Datos</h3>
+                    <p>Implementamos medidas de seguridad para mantener a salvo su información personal. No vendemos, intercambiamos ni transferimos a terceros su información personal bajo ningún concepto.</p>
+                    <h3 class="text-xl font-bold text-white mt-6">4. Sus Derechos</h3>
+                    <p>Usted tiene derecho a acceder, rectificar, cancelar u oponerse al tratamiento de sus datos personales (Derechos ARCO) en cualquier momento. Para ejercer estos derechos, contáctenos directamente al teléfono +34 722 524 609.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PÁGINA 6: Política de Cookies -->
+        <section id="cookies-policy" class="pagina-seccion hidden py-16 bg-black relative fade-in min-h-[80vh]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-black text-white uppercase mb-8 border-b border-gray-800 pb-4">Política de <span class="text-primary">Cookies</span></h2>
+                <div class="space-y-6 text-gray-300 leading-relaxed">
+                    <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario y garantizar su correcto funcionamiento.</p>
+                    <h3 class="text-xl font-bold text-white mt-6">¿Qué son las cookies?</h3>
+                    <p>Las cookies son pequeños archivos de texto que los sitios web guardan en su ordenador o dispositivo móvil cuando los visita. Permiten que el sitio web recuerde sus acciones y preferencias (como el inicio de sesión o tamaño de letra) durante un período de tiempo.</p>
+                    <h3 class="text-xl font-bold text-white mt-6">¿Qué tipo de cookies usamos?</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Cookies técnicas:</strong> Son aquellas estrictamente necesarias para el funcionamiento de la página web (navegación básica).</li>
+                        <li><strong>Cookies de personalización:</strong> Permiten recordar preferencias del usuario.</li>
+                    </ul>
+                    <h3 class="text-xl font-bold text-white mt-6">Cómo gestionar las cookies</h3>
+                    <p>Puede usted permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador o dispositivo móvil.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 border-t border-gray-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="cambiarPagina('inicio')">
+                <img src="Image (3).jpg" alt="Logo Masot" class="h-12 w-12 object-cover rounded-full border border-primary" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=150&h=150&fit=crop'">
+                <span class="font-black text-xl tracking-tighter uppercase">Nutrisport <span class="text-primary">Masot</span></span>
+            </div>
+            <div class="text-gray-500 text-sm text-center md:text-left flex flex-col items-center md:items-start gap-1">
+                <p>&copy; 2026 Nutrisport Masot. Todos los derechos reservados.</p>
+                <p class="text-gray-400 font-medium">Carretera Malgrat 22, Blanes 17300 | Tel: +34 722 524 609</p>
+                <div class="flex gap-4 mt-2">
+                    <a href="javascript:void(0)" onclick="cambiarPagina('privacidad')" class="hover:text-primary transition-colors">Política de Privacidad</a>
+                    <span>|</span>
+                    <a href="javascript:void(0)" onclick="cambiarPagina('cookies-policy')" class="hover:text-primary transition-colors">Política de Cookies</a>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <a href="https://www.instagram.com/nutrisport_masot/" target="_blank" class="w-10 h-10 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all text-gray-400">
+                    <i class="ph-fill ph-instagram-logo text-xl"></i>
+                </a>
+                <a href="https://wa.me/34722524609" target="_blank" class="w-10 h-10 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] hover:text-white transition-all text-gray-400">
+                    <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón flotante WhatsApp siempre visible -->
+    <a href="https://wa.me/34722524609?text=Hola,%20vengo%20de%20la%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n" target="_blank" title="Contactar por WhatsApp" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-green-900/50 hover:scale-110 transition-transform duration-300 border-2 border-black">
+        <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
+    </a>
+
+    <!-- Banner de Cookies -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-gray-900 border-t border-gray-800 z-[100] transform transition-transform duration-500 translate-y-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-sm text-gray-300 text-center md:text-left">
+                Utilizamos cookies propias y de terceros para mejorar la experiencia de navegación. Si continúa navegando, consideramos que acepta su uso.
+            </div>
+            <div class="flex gap-3 flex-shrink-0 items-center">
+                <button onclick="cambiarPagina('cookies-policy'); document.getElementById('cookie-banner').classList.add('translate-y-full')" class="px-4 py-2 text-sm text-gray-300 hover:text-white underline whitespace-nowrap">Más información</button>
+                <button onclick="aceptarCookies()" class="px-6 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primaryDark transition-colors shadow-lg">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts para interactividad (Sistema de Navegación Multi-página) -->
+    <script>
+        // Lógica del Banner de Cookies
+        function aceptarCookies() {
+            document.getElementById('cookie-banner').classList.add('translate-y-full');
+            // Almacenar en el navegador para que no vuelva a salir al recargar
+            localStorage.setItem('cookiesMasot', 'aceptadas');
+        }
+
+        // Comprobar si ya se aceptaron al cargar la página
+        window.addEventListener('DOMContentLoaded', () => {
+            if(localStorage.getItem('cookiesMasot') === 'aceptadas') {
+                document.getElementById('cookie-banner').classList.add('translate-y-full'); // Ocultar si ya se aceptaron
+            }
+        });
+
+        // Función principal para cambiar de "páginas"
+        function cambiarPagina(idPagina) {
+            // 1. Ocultar todas las secciones
+            const secciones = document.querySelectorAll('.pagina-seccion');
+            secciones.forEach(sec => {
+                sec.classList.remove('block');
+                sec.classList.add('hidden');
+            });
+
+            // 2. Mostrar solo la sección solicitada
+            const paginaActiva = document.getElementById(idPagina);
+            if (paginaActiva) {
+                paginaActiva.classList.remove('hidden');
+                paginaActiva.classList.add('block');
+            }
+
+            // 3. Cerrar el menú del móvil si está abierto
+            const menuMovil = document.getElementById('mobile-menu');
+            menuMovil.classList.add('hidden');
+
+            // 4. Volver al principio de la página
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Lógica para abrir/cerrar el menú móvil con el botón hamburguesa
+        const btnMenu = document.getElementById('mobile-menu-btn');
+        btnMenu.addEventListener('click', () => {
+            const menuMovil = document.getElementById('mobile-menu');
+            menuMovil.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
