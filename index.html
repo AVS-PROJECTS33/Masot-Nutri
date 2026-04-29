@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutrisport Masot</title>
     
+    <!-- Iconos de App (Android & iOS) -->
+    <link rel="icon" href="Image (5).jpg">
+    <link rel="apple-touch-icon" href="Image (5).jpg">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Masot">
+    <meta name="mobile-web-app-capable" content="yes">
+
     <!-- Tailwind CSS para el diseño -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -52,8 +60,8 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="cambiarPagina('inicio')">
-                    <!-- Imagen del Logo con fallback (Actualizado a Image (3).jpg) -->
-                    <img src="Image (3).jpg" alt="Logo Masot" class="h-14 w-14 object-cover rounded-full border-2 border-primary bg-black" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=150&h=150&fit=crop'">
+                    <!-- Imagen del Logo con fallback (Actualizado a Image (5).jpg) -->
+                    <img src="Image (5).jpg" alt="Logo Masot" class="h-14 w-14 object-cover rounded-full border-2 border-primary bg-black" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=150&h=150&fit=crop'">
                     <span class="font-black text-xl md:text-2xl tracking-tighter text-white uppercase">Nutrisport <span class="text-primary">Masot</span></span>
                 </div>
                 
@@ -63,10 +71,13 @@
                     <a href="javascript:void(0)" onclick="cambiarPagina('historia')" class="nav-link text-gray-300 hover:text-primary font-bold transition-colors uppercase tracking-wide text-sm">El Centro</a>
                     <a href="javascript:void(0)" onclick="cambiarPagina('reservas')" class="nav-link text-gray-300 hover:text-primary font-bold transition-colors uppercase tracking-wide text-sm">Servicios</a>
                     <a href="javascript:void(0)" onclick="cambiarPagina('contacto')" class="nav-link text-gray-300 hover:text-primary font-bold transition-colors uppercase tracking-wide text-sm">Contacto</a>
-                    <a href="https://www.instagram.com/nutrisport_masot/" target="_blank" rel="noopener noreferrer" class="bg-primary text-white px-5 py-2.5 rounded-full font-black hover:bg-primaryDark transition-colors flex items-center gap-2 uppercase text-sm tracking-wide shadow-lg shadow-primary/20">
-                        <i class="ph ph-instagram-logo text-xl"></i>
-                        Instagram
-                    </a>
+                    
+                    <!-- Botón Reservas (Próximamente) -->
+                    <div class="bg-gray-800 text-gray-400 px-5 py-2.5 rounded-full font-black flex items-center gap-2 uppercase text-sm tracking-wide cursor-not-allowed border border-gray-700 select-none" title="Estará disponible en el futuro">
+                        <i class="ph ph-calendar-plus text-xl"></i>
+                        Reservas 
+                        <span class="text-[10px] text-primary font-bold bg-primary/10 px-2 py-0.5 rounded-full ml-1">Próximamente</span>
+                    </div>
                 </div>
 
                 <!-- Botón Menú Móvil -->
@@ -123,11 +134,10 @@
                     <div class="relative mt-10 md:mt-0">
                         <!-- Imagen 1 (La Nutricionista) -->
                         <div class="relative rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(220,38,38,0.2)] border-4 border-primary/50 aspect-[4/5] group">
-                            <!-- Usa "Image (1).jpg" pero con un fallback de Unsplash si no se encuentra en el editor -->
-                            <img src="Image (1).jpg" 
-                                 alt="Nutricionista" 
-                                 class="w-full h-full object-cover transition-all duration-700 hover:scale-105"
-                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1000&auto=format&fit=crop'">
+                            <!-- Imagen actualizada a Image (6).jpg con el texto de los excesos -->
+                            <img src="Image (6).jpg" 
+                                 alt="Nutricionista Masot" 
+                                 class="w-full h-full object-cover transition-all duration-700 hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent pointer-events-none"></div>
                         </div>
                     </div>
@@ -381,7 +391,7 @@
     <footer class="bg-black text-white py-12 border-t border-gray-900 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-3 cursor-pointer" onclick="cambiarPagina('inicio')">
-                <img src="Image (3).jpg" alt="Logo Masot" class="h-12 w-12 object-cover rounded-full border border-primary" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=150&h=150&fit=crop'">
+                <img src="Image (5).jpg" alt="Logo Masot" class="h-12 w-12 object-cover rounded-full border border-primary" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=150&h=150&fit=crop'">
                 <span class="font-black text-xl tracking-tighter uppercase">Nutrisport <span class="text-primary">Masot</span></span>
             </div>
             <div class="text-gray-500 text-sm text-center md:text-left flex flex-col items-center md:items-start gap-1">
@@ -438,6 +448,20 @@
             }
         });
 
+        // Truco del script invisible para iOS (Evita que abra Safari al navegar y fuerza el comportamiento de App)
+        if (("standalone" in window.navigator) && window.navigator.standalone) {
+            document.addEventListener('click', function(event) {
+                var target = event.target;
+                while (target.nodeName !== 'A' && target.nodeName !== 'HTML') {
+                    target = target.parentNode;
+                }
+                if ('href' in target && target.href.indexOf('http') !== -1 && target.href.indexOf(document.location.host) !== -1) {
+                    event.preventDefault();
+                    document.location.href = target.href;
+                }
+            }, false);
+        }
+
         // Función principal para cambiar de "páginas"
         function cambiarPagina(idPagina) {
             // 1. Ocultar todas las secciones
@@ -468,6 +492,26 @@
             const menuMovil = document.getElementById('mobile-menu');
             menuMovil.classList.toggle('hidden');
         });
+    </script>
+
+    <!-- Configuración de Firebase -->
+    <script type="module">
+        // Importar las funciones de Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+
+        // Tu configuración de Firebase
+        const firebaseConfig = {
+          apiKey: "AIzaSyDkgKdtmd7TwO1Q5p5Fo6PBf51htjoVFwM",
+          authDomain: "nutrisport-masot.firebaseapp.com",
+          projectId: "nutrisport-masot",
+          storageBucket: "nutrisport-masot.firebasestorage.app",
+          messagingSenderId: "471835812538",
+          appId: "1:471835812538:web:8af31dcf8aa1a137ff5883"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        console.log("Firebase de Nutrisport Masot conectado correctamente.");
     </script>
 </body>
 </html>
