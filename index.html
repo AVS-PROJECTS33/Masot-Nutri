@@ -6,8 +6,8 @@
     <title>Nutrisport Masot</title>
     
     <!-- Iconos de App (Android & iOS) -->
-    <link rel="icon" href="Image (5).jpg">
-    <link rel="apple-touch-icon" href="Image (5).jpg">
+    <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/nutrisport-masot.firebasestorage.app/o/Image%20(5).jpg?alt=media">
+    <link rel="apple-touch-icon" href="https://firebasestorage.googleapis.com/v0/b/nutrisport-masot.firebasestorage.app/o/Image%20(5).jpg?alt=media">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Masot">
@@ -60,8 +60,10 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="cambiarPagina('inicio')">
-                    <!-- Imagen del Logo con fallback (Actualizado a Image (5).jpg) -->
-                    <img src="Image (5).jpg" alt="Logo Masot" class="h-14 w-14 object-cover rounded-full border-2 border-primary bg-black" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=150&h=150&fit=crop'">
+                    <!-- Imagen del Logo ajustada para encuadrar la redonda -->
+                    <div class="h-14 w-14 rounded-full border-2 border-primary overflow-hidden bg-black flex items-center justify-center">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/nutrisport-masot.firebasestorage.app/o/Image%20(5).jpg?alt=media" alt="Logo Masot" class="h-full w-full object-cover scale-[1.15]" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=150&h=150&fit=crop'">
+                    </div>
                     <span class="font-black text-xl md:text-2xl tracking-tighter text-white uppercase">Nutrisport <span class="text-primary">Masot</span></span>
                 </div>
                 
@@ -134,8 +136,8 @@
                     <div class="relative mt-10 md:mt-0">
                         <!-- Imagen 1 (La Nutricionista) -->
                         <div class="relative rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(220,38,38,0.2)] border-4 border-primary/50 aspect-[4/5] group">
-                            <!-- Imagen actualizada a Image (6).jpg con el texto de los excesos -->
-                            <img src="Image (6).jpg" 
+                            <!-- Imagen actualizada a la URL pública de Firebase Storage -->
+                            <img src="https://firebasestorage.googleapis.com/v0/b/nutrisport-masot.firebasestorage.app/o/Image%20(6).jpg?alt=media" 
                                  alt="Nutricionista Masot" 
                                  class="w-full h-full object-cover transition-all duration-700 hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent pointer-events-none"></div>
@@ -391,7 +393,9 @@
     <footer class="bg-black text-white py-12 border-t border-gray-900 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-3 cursor-pointer" onclick="cambiarPagina('inicio')">
-                <img src="Image (5).jpg" alt="Logo Masot" class="h-12 w-12 object-cover rounded-full border border-primary" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=150&h=150&fit=crop'">
+                <div class="h-12 w-12 rounded-full border border-primary overflow-hidden bg-black flex items-center justify-center">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/nutrisport-masot.firebasestorage.app/o/Image%20(5).jpg?alt=media" alt="Logo Masot" class="h-full w-full object-cover scale-[1.15]" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=150&h=150&fit=crop'">
+                </div>
                 <span class="font-black text-xl tracking-tighter uppercase">Nutrisport <span class="text-primary">Masot</span></span>
             </div>
             <div class="text-gray-500 text-sm text-center md:text-left flex flex-col items-center md:items-start gap-1">
