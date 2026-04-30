@@ -73,6 +73,7 @@
                     <a href="javascript:void(0)" onclick="cambiarPagina('historia')" class="nav-link text-gray-300 hover:text-primary font-bold transition-colors uppercase tracking-wide text-sm">El Centro</a>
                     <a href="javascript:void(0)" onclick="cambiarPagina('reservas')" class="nav-link text-gray-300 hover:text-primary font-bold transition-colors uppercase tracking-wide text-sm">Servicios</a>
                     <a href="javascript:void(0)" onclick="cambiarPagina('contacto')" class="nav-link text-gray-300 hover:text-primary font-bold transition-colors uppercase tracking-wide text-sm">Contacto</a>
+                    <a href="javascript:void(0)" onclick="cambiarPagina('ubicacion')" class="nav-link text-gray-300 hover:text-primary font-bold transition-colors uppercase tracking-wide text-sm">Ubicación</a>
                     
                     <!-- Botón Reservas (Próximamente) -->
                     <div class="bg-gray-800 text-gray-400 px-5 py-2.5 rounded-full font-black flex items-center gap-2 uppercase text-sm tracking-wide cursor-not-allowed border border-gray-700 select-none" title="Estará disponible en el futuro">
@@ -98,6 +99,7 @@
                 <a href="javascript:void(0)" onclick="cambiarPagina('historia')" class="block px-3 py-3 text-base font-bold text-gray-300 hover:text-primary hover:bg-gray-900 rounded-md uppercase text-center border-b border-gray-900">El Centro</a>
                 <a href="javascript:void(0)" onclick="cambiarPagina('reservas')" class="block px-3 py-3 text-base font-bold text-gray-300 hover:text-primary hover:bg-gray-900 rounded-md uppercase text-center border-b border-gray-900">Servicios</a>
                 <a href="javascript:void(0)" onclick="cambiarPagina('contacto')" class="block px-3 py-3 text-base font-bold text-gray-300 hover:text-primary hover:bg-gray-900 rounded-md uppercase text-center border-b border-gray-900">Contacto</a>
+                <a href="javascript:void(0)" onclick="cambiarPagina('ubicacion')" class="block px-3 py-3 text-base font-bold text-gray-300 hover:text-primary hover:bg-gray-900 rounded-md uppercase text-center border-b border-gray-900">Ubicación</a>
                 
                 <!-- Botón Reservas (Próximamente) en Móvil -->
                 <div class="mt-2 mx-2 py-3 bg-gray-800 text-gray-400 rounded-lg font-black flex items-center justify-center gap-2 uppercase text-sm tracking-wide cursor-not-allowed border border-gray-700 select-none">
@@ -393,7 +395,50 @@
             </div>
         </section>
 
-        <!-- PÁGINA 5: Política de Privacidad -->
+        <!-- PÁGINA 5: Ubicación (NUEVA SECCIÓN) -->
+        <section id="ubicacion" class="pagina-seccion hidden py-16 bg-dark relative fade-in min-h-[80vh]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-sm font-black tracking-widest text-primary uppercase mb-2">Ubicación</h2>
+                    <h3 class="text-3xl md:text-5xl font-black text-white uppercase leading-tight">¿Dónde <span class="text-primary">estamos?</span></h3>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto text-lg mb-8">
+                        Ven a visitarnos a nuestro centro en Blanes. Haz clic en la imagen o en el botón para abrir la ubicación en Google Maps.
+                    </p>
+                    
+                    <!-- Botón directo a Google Maps -->
+                    <a href="https://maps.google.com/?q=Carretera+Malgrat+22,+Blanes+17300" target="_blank" class="inline-flex items-center gap-2 px-8 py-3 bg-gray-900 border border-primary text-white rounded-full font-black hover:bg-primary transition-all uppercase tracking-wide shadow-lg shadow-primary/20">
+                        <i class="ph-fill ph-map-trifold text-2xl"></i>
+                        Ir a Google Maps
+                    </a>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <!-- Contenedor de la Imagen con Enlace a Google Maps -->
+                    <a href="https://maps.google.com/?q=Carretera+Malgrat+22,+Blanes+17300" target="_blank" class="relative group block w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-800 hover:border-primary transition-all duration-300 cursor-pointer">
+                        <!-- Imagen proporcionada -->
+                        <img src="https://raw.githubusercontent.com/AVS-PROJECTS33/Masot-Nutri/main/Gemini_Generated_Image_obgzrbobgzrbobgz.png" 
+                             alt="Ubicación Nutrisport Masot" 
+                             class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop'">
+                        
+                        <!-- Overlay que aparece al hacer hover -->
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
+                            <i class="ph-fill ph-map-pin text-6xl text-primary mb-4 drop-shadow-lg"></i>
+                            <span class="text-white font-black text-xl md:text-2xl uppercase tracking-wider drop-shadow-md">Abrir en Google Maps</span>
+                        </div>
+                    </a>
+
+                    <!-- Detalles de la dirección debajo de la imagen -->
+                    <div class="mt-8 bg-gray-900 p-6 rounded-xl border border-gray-800 text-center w-full max-w-2xl">
+                        <i class="ph-fill ph-navigation-arrow text-primary text-3xl mb-2"></i>
+                        <h4 class="text-xl font-bold text-white mb-1">Carretera Malgrat 22</h4>
+                        <p class="text-gray-400">Blanes, 17300 (Girona)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PÁGINA 6: Política de Privacidad -->
         <section id="privacidad" class="pagina-seccion hidden py-16 bg-black relative fade-in min-h-[80vh]">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-black text-white uppercase mb-8 border-b border-gray-800 pb-4">Política de <span class="text-primary">Privacidad</span></h2>
@@ -411,7 +456,7 @@
             </div>
         </section>
 
-        <!-- PÁGINA 6: Política de Cookies -->
+        <!-- PÁGINA 7: Política de Cookies -->
         <section id="cookies-policy" class="pagina-seccion hidden py-16 bg-black relative fade-in min-h-[80vh]">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-black text-white uppercase mb-8 border-b border-gray-800 pb-4">Política de <span class="text-primary">Cookies</span></h2>
@@ -527,7 +572,9 @@
 
             // 3. Cerrar el menú del móvil si está abierto
             const menuMovil = document.getElementById('mobile-menu');
-            menuMovil.classList.add('hidden');
+            if(menuMovil && !menuMovil.classList.contains('hidden')){
+                 menuMovil.classList.add('hidden');
+            }
 
             // 4. Volver al principio de la página
             window.scrollTo({ top: 0, behavior: 'smooth' });
